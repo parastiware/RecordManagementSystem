@@ -1,0 +1,17 @@
+@model Employee
+@{
+    ViewData["Titlephrase"]=@Model.FirstName;
+}
+<h1 style="color: red;">Are you sure to remove following data !!! <a class="btn btn-outline-primary" href="/employee/index" role="button">Go Back</a></h1>
+
+<ul class="list-group">
+<li class="list-group-item">First Name: @Model.FirstName</li>
+<li class="list-group-item">Last Name: @Model.LastName</li>
+<li class="list-group-item">Address: @Model.Address</li>
+<li class="list-group-item">Gender: @Model.Gender</li>
+<li class="list-group-item">Saalary: @Model.Salary</li>
+</ul>
+<form asp-controller="Employee" asp-action="Delete" method="POST">
+ <input type="hidden" asp-for="Id"/>
+  <button class="btn btn-danger">Delete Anyway</button>  
+</form>

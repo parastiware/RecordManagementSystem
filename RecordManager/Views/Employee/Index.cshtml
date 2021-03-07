@@ -1,0 +1,82 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+ @model List<Employee>
+@{
+    ViewData["Titlephrase"] = "List";
+}
+@if (SignInManager.IsSignedIn(User))
+{
+<h1>Welcome to your record page @User.Identity.Name .All Employees (@Model.Count)</h1>
+<table class="table background-dark">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">MiddleName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Address</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{int i=0;}
+     @foreach (var employee in Model)
+     {
+       <tr scope ="row">
+         <td>@(++i)</td>
+         
+        <td>@employee.FirstName</td>
+        <td>@employee.MiddleName</td>
+         <td>@employee.LastName</td>
+         <td>@employee.Address</td>
+         <td>@employee.Gender</td>
+         <td>@employee.Salary</td> 
+         <td><span><a href="/employee/edit?Id=@employee.Id"><button class="btn btn-primary">Edit</button></a>&nbsp;<a href="/employee/delete?Id=@employee.Id"><button class="btn btn-danger">Delete</button></a></span></td> 
+       </tr>
+         
+     }
+  </tbody>
+</table>
+
+}
+else{
+<h1>All Employees (@Model.Count)</h1><br>
+<h3>You are not Signed In.Please <a asp-area="Identity" asp-page="/Account/LogIn">SignIn</a> or <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+to add,update or delete the records</h3>
+<a href="/employee/add"><button class="btn-primary">Add Records</button></a>
+<table class="table background-dark">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">MiddleName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Address</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{int i=0;}
+     @foreach (var employee in Model)
+     {
+       <tr scope ="row">
+         <td>@(++i)</td>
+        <td>@employee.FirstName</td>
+        <td>@employee.MiddleName</td>
+         <td>@employee.LastName</td>
+         <td>@employee.Address</td>
+         <td>@employee.Gender</td>
+         <td>@employee.Salary</td> 
+       </tr>
+         
+     }
+  </tbody>
+</table>
+
+    
+
+}            
