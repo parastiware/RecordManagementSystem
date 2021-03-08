@@ -8,6 +8,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
 <h1>Welcome to your record page @User.Identity.Name .All Employees (@Model.Count)</h1>
+<a href="/employee/add"><button class="btn-primary">Add Records</button></a>
 <table class="table background-dark">
   <thead class="thead-light">
     <tr>
@@ -46,7 +47,7 @@ else{
 <h1>All Employees (@Model.Count)</h1><br>
 <h3>You are not Signed In.Please <a asp-area="Identity" asp-page="/Account/LogIn">SignIn</a> or <a asp-area="Identity" asp-page="/Account/Register">Register</a>
 to add,update or delete the records</h3>
-<a href="/employee/add"><button class="btn-primary">Add Records</button></a>
+
 <table class="table background-dark">
   <thead class="thead-light">
     <tr>
