@@ -10,8 +10,8 @@ using RecordManager.Data;
 namespace RecordManager.Migrations
 {
     [DbContext(typeof(RMSDbContext))]
-    [Migration("20210307040816_Initial create")]
-    partial class Initialcreate
+    [Migration("20210702133205_Initial Create")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -223,10 +223,9 @@ namespace RecordManager.Migrations
 
             modelBuilder.Entity("RecordManager.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
